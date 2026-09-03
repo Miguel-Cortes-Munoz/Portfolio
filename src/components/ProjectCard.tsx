@@ -1,4 +1,4 @@
-import type { Project } from '../data/Project'
+import type { Project } from '../data/project'
 
 type ProjectCardProps = {
   project: Project
