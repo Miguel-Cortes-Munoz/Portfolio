@@ -1,6 +1,6 @@
 import Navbar from './components/Navbar'
 import ProjectCard from './components/ProjectCard'
-import { projects } from './data/Project'
+import { projects } from './data/projects'
 
 function App() {
   return (
