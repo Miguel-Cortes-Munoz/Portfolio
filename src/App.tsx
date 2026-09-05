@@ -1,32 +1,37 @@
-import Navbar from './components/Navbar'
-import ProjectCard from './components/ProjectCard'
-import { projects } from './data/projects'
+import { useRef, useState } from "react";
+import Hero from "./components/Hero";
+import Navbar from "./components/Navbar";
+import ProjectCard from "./components/ProjectCard";
+import { projects } from "./data/projects";
 
 function App() {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [showNavbar, setShowNavbar] = useState(false);
+  
+  const enterSite = () => {
+    setShowNavbar(true);
+    contentRef.current?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
   return (
     <>
-      <Navbar name="Miguel" />
+      <Hero onEnter={enterSite} />
 
-      <main>
-        <h1>Software Developer</h1>
+      <div ref={contentRef}>
+        {showNavbar && <Navbar name="about me" />}
 
-        <p>
-          I build software across web, systems, and data.
-        </p>
-
-        <section id="projects">
-          <h2>Projects</h2>
-
-          {projects.map((project) => (
-            <ProjectCard
-              key={project.title}
-              project={project}
-            />
-          ))}
-        </section>
-      </main>
+        <div className="min-h-screen bg-linear-to-br from-midnight via-indigo to-midnight">
+          <div className="container mx-auto px-4 py-8">
+            {projects.map((project) => (
+              <ProjectCard key={project.title} project={project} />
+            ))}
+          </div>
+        </div>
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
