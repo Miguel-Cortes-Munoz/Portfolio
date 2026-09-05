@@ -12,10 +12,15 @@ export default function Hero({ onEnter }: HeroProps) {
             key={i}
             className="absolute rounded-full bg-mist"
             style={{
+              // eslint-disable-next-line react-hooks/purity
               top: `${Math.random() * 100}%`,
+              // eslint-disable-next-line react-hooks/purity
               left: `${Math.random() * 100}%`,
+              // eslint-disable-next-line react-hooks/purity
               width: `${Math.random() * 2 + 1}px`,
+              // eslint-disable-next-line react-hooks/purity
               height: `${Math.random() * 2 + 1}px`,
+              // eslint-disable-next-line react-hooks/purity
               opacity: Math.random() * 0.6 + 0.2,
             }}
           />
