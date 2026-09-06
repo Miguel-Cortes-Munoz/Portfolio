@@ -271,17 +271,17 @@ function App() {
 
         {/* Email */}
         <a
-            href="mailto:your.email@example.com"
+            href="mailto:Miguel.CortesMunoz@outlook.com"
             className="inline-block text-xl text-indigo-200 hover:text-mist transition-colors mb-10"
         >
-            your.email@example.com
+            Miguel.CortesMunoz@outlook.com
         </a>
 
         {/* Links */}
         <div className="flex justify-center flex-wrap gap-4">
 
             <a
-                href="https://github.com/yourusername"
+                href="https://github.com/Miguel-Cortes-Munoz"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 rounded-lg border border-mist/20 text-mist hover:bg-mist/10 transition"
@@ -290,7 +290,7 @@ function App() {
             </a>
 
             <a
-                href="https://www.linkedin.com/in/yourusername"
+                href="https://www.linkedin.com/in/miguel-cortes-munoz-472a74359/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 rounded-lg border border-mist/20 text-mist hover:bg-mist/10 transition"
@@ -299,7 +299,7 @@ function App() {
             </a>
 
             <a
-                href="/resume.pdf"
+                href="../public/MiguelCortesMunoz_DEVresume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 rounded-lg bg-indigo/40 text-mist hover:bg-indigo/60 transition"
