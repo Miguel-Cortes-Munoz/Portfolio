@@ -1,27 +1,33 @@
+import { useState } from "react";
+
 type HeroProps = {
   onEnter: () => void;
 };
 
 export default function Hero({ onEnter }: HeroProps) {
+  const [stars] = useState(() =>
+    Array.from({ length: 100 }).map(() => ({
+      top: Math.random() * 100,
+      left: Math.random() * 100,
+      size: Math.random() * 2 + 1,
+      opacity: Math.random() * 0.6 + 0.2,
+    }))
+  );
+
   return (
     <section className="relative min-h-screen overflow-hidden bg-midnight text-mist">
-      {/* scattered stars instead of blob glows */}
+      {/* scattered stars */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        {Array.from({ length: 40 }).map((_, i) => (
+        {stars.map((star, i) => (
           <div
             key={i}
             className="absolute rounded-full bg-mist"
             style={{
-              // eslint-disable-next-line react-hooks/purity
-              top: `${Math.random() * 100}%`,
-              // eslint-disable-next-line react-hooks/purity
-              left: `${Math.random() * 100}%`,
-              // eslint-disable-next-line react-hooks/purity
-              width: `${Math.random() * 2 + 1}px`,
-              // eslint-disable-next-line react-hooks/purity
-              height: `${Math.random() * 2 + 1}px`,
-              // eslint-disable-next-line react-hooks/purity
-              opacity: Math.random() * 0.6 + 0.2,
+              top: `${star.top}%`,
+              left: `${star.left}%`,
+              width: `${star.size}px`,
+              height: `${star.size}px`,
+              opacity: star.opacity,
             }}
           />
         ))}
