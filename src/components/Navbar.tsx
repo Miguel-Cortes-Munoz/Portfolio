@@ -20,9 +20,6 @@ export default function Navbar({ name }: NavbarProps) {
                 <a href="#education" className="hover:text-plum transition-colors">
         Education
         </a>
-                <a href="#skills" className="hover:text-plum transition-colors">
-          Skills
-        </a>
         <a href="#contact" className="hover:text-plum transition-colors">
           Contact
         </a>

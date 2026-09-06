@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import ProjectCard from "./components/ProjectCard";
@@ -11,6 +11,13 @@ function App() {
   const enterSite = () => {
     setEntered(true);
   };
+  useEffect(() => {
+    document.body.style.overflow = entered ? "" : "hidden";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [entered]);
 
   return (
     <>
@@ -29,17 +36,19 @@ function App() {
           entered ? "opacity-100" : "opacity-0"
         }`}
       >
-        {entered && <Navbar name="about me" />}
+        {entered && <Navbar name="Miguel Cortes Munoz" />}
 
         <div
           ref={contentRef}
-          className="min-h-screen bg-linear-to-br from-midnight via-indigo to-midnight"
+          className="min-h-screen bg-linear-to-br from-midnight via-indigo to-midnight "
         >
-          <div className="pt-15"></div>
+          <div id="about" className="pt-8"></div>
 
           {/* About Me */}
-          <section id="about" className="container mx-auto px-4 py-24">
-            <h1 className="text-4xl font-bold text-mist mb-12">About Me</h1>
+          <section className="container mx-auto px-4 py-24 ">
+            <h1 className="text-4xl font-bold text-mist mb-12 text-Center ">
+              About Me
+            </h1>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               {/* Photo */}
@@ -94,224 +103,208 @@ function App() {
           <section id="projects" className="container mx-auto px-4 py-8">
             <h1 className="text-4xl font-bold text-mist mb-8">Projects</h1>
 
-            <div className="container mx-auto px-2 py-8">
+            <div className="container mx-auto px-2 py-8 grid gap-6 sm:grid-cols-2">
               {projects.map((project) => (
                 <ProjectCard key={project.title} project={project} />
               ))}
             </div>
           </section>
 
+          {/* Education & Skills */}
+          <section id="education" className="container mx-auto px-4 py-24">
+            <h1 className="text-4xl font-bold text-mist mb-12">
+              Education & Skills
+            </h1>
 
-                {/* Education & Skills */}
-<section
-    id="education"
-    className="container mx-auto px-4 py-24"
->
-    <h1 className="text-4xl font-bold text-mist mb-12">
-        Education & Skills
-    </h1>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              {/* Education */}
+              <div>
+                <h2 className="text-2xl font-semibold text-mist mb-6">
+                  Education
+                </h2>
 
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-
-        {/* Education */}
-        <div>
-            <h2 className="text-2xl font-semibold text-mist mb-6">
-                Education
-            </h2>
-
-            <div className="rounded-2xl border border-mist/10 bg-midnight/30 p-6">
-                <div className="flex justify-between items-start gap-4 mb-4">
+                <div className="rounded-2xl border border-mist/10 bg-midnight/30 p-6">
+                  <div className="flex justify-between items-start gap-4 mb-4">
                     <div>
-                        <h3 className="text-xl font-semibold text-mist">
-                            Bachelor of Science in Computer Science
-                        </h3>
+                      <h3 className="text-xl font-semibold text-mist">
+                        Bachelor of Science in Computer Science
+                      </h3>
 
-                        <p className="text-indigo-200 mt-1">
-                            University of Lethbridge
-                        </p>
+                      <p className="text-indigo-200 mt-1">
+                        University of Lethbridge
+                      </p>
                     </div>
 
                     <span className="text-sm text-mist/60 whitespace-nowrap">
-                        2026
+                      2026
                     </span>
-                </div>
+                  </div>
 
-                <p className="text-mist/70 leading-relaxed">
-                    Minor in Mathematics. Developed a strong foundation
-                    in software development, algorithms, data structures,
+                  <p className="text-mist/70 leading-relaxed">
+                    Minor in Mathematics. Developed a strong foundation in
+                    software development, algorithms, data structures,
                     databases, computer networks, and systems.
-                </p>
+                  </p>
 
-                <div className="mt-6">
+                  <div className="mt-6">
                     <h4 className="text-sm font-semibold text-mist/80 mb-3">
-                        Areas of Study
+                      Areas of Study
                     </h4>
 
                     <div className="flex flex-wrap gap-2">
-                        <span className="px-3 py-1 rounded-full bg-indigo/30 text-sm text-mist">
-                            Algorithms
-                        </span>
+                      <span className="px-3 py-1 rounded-full bg-indigo/30 text-sm text-mist">
+                        Algorithms
+                      </span>
 
-                        <span className="px-3 py-1 rounded-full bg-indigo/30 text-sm text-mist">
-                            Data Structures
-                        </span>
+                      <span className="px-3 py-1 rounded-full bg-indigo/30 text-sm text-mist">
+                        Data Structures
+                      </span>
 
-                        <span className="px-3 py-1 rounded-full bg-indigo/30 text-sm text-mist">
-                            Databases
-                        </span>
+                      <span className="px-3 py-1 rounded-full bg-indigo/30 text-sm text-mist">
+                        Databases
+                      </span>
 
-                        <span className="px-3 py-1 rounded-full bg-indigo/30 text-sm text-mist">
-                            Computer Networks
-                        </span>
+                      <span className="px-3 py-1 rounded-full bg-indigo/30 text-sm text-mist">
+                        Computer Networks
+                      </span>
 
-                        <span className="px-3 py-1 rounded-full bg-indigo/30 text-sm text-mist">
-                            Systems
-                        </span>
+                      <span className="px-3 py-1 rounded-full bg-indigo/30 text-sm text-mist">
+                        Systems
+                      </span>
 
-                        <span className="px-3 py-1 rounded-full bg-indigo/30 text-sm text-mist">
-                            Mathematics
-                        </span>
+                      <span className="px-3 py-1 rounded-full bg-indigo/30 text-sm text-mist">
+                        Mathematics
+                      </span>
                     </div>
+                  </div>
                 </div>
+              </div>
+
+              {/* Skills */}
+              <div>
+                <h2 className="text-2xl font-semibold text-mist mb-6">
+                  Skills
+                </h2>
+
+                <div className="space-y-6">
+                  {/* Languages */}
+                  <div>
+                    <h3 className="text-lg font-medium text-mist mb-3">
+                      Languages
+                    </h3>
+
+                    <div className="text-mist/80 flex flex-wrap gap-3">
+                      <span className="skill">C++</span>
+                      <span className="skill">Python</span>
+                      <span className="skill">TypeScript</span>
+                      <span className="skill">JavaScript</span>
+                      <span className="skill">SQL</span>
+                      <span className="skill">C#</span>
+                      <span className="skill">Java</span>
+                    </div>
+                  </div>
+
+                  {/* Frontend */}
+                  <div>
+                    <h3 className="text-lg font-medium text-mist mb-3">
+                      Frontend
+                    </h3>
+
+                    <div className=" text-mist/80 flex flex-wrap gap-3">
+                      <span className="skill">React</span>
+                      <span className="skill">HTML</span>
+                      <span className="skill">CSS</span>
+                      <span className="skill">Tailwind CSS</span>
+                    </div>
+                  </div>
+
+                  {/* Backend & Data */}
+                  <div>
+                    <h3 className="text-lg font-medium text-mist mb-3">
+                      Backend & Data
+                    </h3>
+
+                    <div className="text-mist/80 flex flex-wrap gap-3">
+                      <span className="skill">Node.js</span>
+                      <span className="skill">.NET</span>
+                      <span className="skill">SQL</span>
+                      <span className="skill">PostgreSQL</span>
+                    </div>
+                  </div>
+
+                  {/* Systems */}
+                  <div>
+                    <h3 className="text-lg font-medium text-mist mb-3">
+                      Systems & Tools
+                    </h3>
+
+                    <div className="text-mist/80 flex flex-wrap gap-3">
+                      <span className="skill">Linux</span>
+                      <span className="skill">Git</span>
+                      <span className="skill">TCP/IP</span>
+                      <span className="skill">Networking</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
+          </section>
 
-        {/* Skills */}
-        <div>
-            <h2 className="text-2xl font-semibold text-mist mb-6">
-                Skills
-            </h2>
+          {/* Contact */}
+          <section id="contact" className="container mx-auto px-6 py-12">
+            <h1 className="text-4xl font-bold text-mist mb-15 flex ">
+              Contact Me
+            </h1>
 
-            <div className="space-y-6">
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-2xl font-semibold text-mist mb-2">
+                Let's get in touch
+              </h2>
 
-                {/* Languages */}
-                <div>
-                    <h3 className="text-lg font-medium text-mist mb-3">
-                        Languages
-                    </h3>
+              <p className="text-lg text-mist/70 leading-relaxed mb-8">
+                Whether you have a job opportunity, want to collaborate, or just
+                want to say hello, I'd love to hear from you.
+              </p>
 
-                    <div className="flex flex-wrap gap-3">
-                        <span className="skill">C++</span>
-                        <span className="skill">Python</span>
-                        <span className="skill">TypeScript</span>
-                        <span className="skill">JavaScript</span>
-                        <span className="skill">SQL</span>
-                        <span className="skill">C#</span>
-                        <span className="skill">Java</span>
-                    </div>
-                </div>
+              {/* Email */}
+              <a
+                href="mailto:Miguel.CortesMunoz@outlook.com"
+                className="inline-block text-xl text-indigo-200 hover:text-mist transition-colors mb-10"
+              >
+                Miguel.CortesMunoz@outlook.com
+              </a>
 
-                {/* Frontend */}
-                <div>
-                    <h3 className="text-lg font-medium text-mist mb-3">
-                        Frontend
-                    </h3>
+              {/* Links */}
+              <div className="flex justify-center flex-wrap gap-4">
+                <a
+                  href="https://github.com/Miguel-Cortes-Munoz"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 rounded-lg border border-mist/20 text-mist hover:bg-mist/10 transition"
+                >
+                  GitHub
+                </a>
 
-                    <div className="flex flex-wrap gap-3">
-                        <span className="skill">React</span>
-                        <span className="skill">HTML</span>
-                        <span className="skill">CSS</span>
-                        <span className="skill">Tailwind CSS</span>
-                    </div>
-                </div>
+                <a
+                  href="https://www.linkedin.com/in/miguel-cortes-munoz-472a74359/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 rounded-lg border border-mist/20 text-mist hover:bg-mist/10 transition"
+                >
+                  LinkedIn
+                </a>
 
-                {/* Backend & Data */}
-                <div>
-                    <h3 className="text-lg font-medium text-mist mb-3">
-                        Backend & Data
-                    </h3>
-
-                    <div className="flex flex-wrap gap-3">
-                        <span className="skill">Node.js</span>
-                        <span className="skill">.NET</span>
-                        <span className="skill">SQL</span>
-                        <span className="skill">PostgreSQL</span>
-                    </div>
-                </div>
-
-                {/* Systems */}
-                <div>
-                    <h3 className="text-lg font-medium text-mist mb-3">
-                        Systems & Tools
-                    </h3>
-
-                    <div className="flex flex-wrap gap-3">
-                        <span className="skill">Linux</span>
-                        <span className="skill">Git</span>
-                        <span className="skill">TCP/IP</span>
-                        <span className="skill">Networking</span>
-                    </div>
-                </div>
-
+                <a
+                  href="/MiguelCortesMunoz_DEVresume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-6 py-3 rounded-lg bg-indigo/40 text-mist hover:bg-indigo/60 transition"
+                >
+                  Resume
+                </a>
+              </div>
             </div>
-        </div>
-
-    </div>
-</section>
-
-{/* Contact */}
-<section
-    id="contact"
-    className="container mx-auto px-4 py-24"
->
-    <h1 className="text-4xl font-bold text-mist mb-12">
-        Contact Me
-    </h1>
-
-    <div className="max-w-3xl mx-auto text-center">
-
-        <h2 className="text-3xl font-semibold text-mist mb-4">
-            Let's get in touch.
-        </h2>
-
-        <p className="text-lg text-mist/70 leading-relaxed mb-8">
-            Whether you have a job opportunity, want to collaborate,
-            or just want to say hello, I'd love to hear from you.
-        </p>
-
-        {/* Email */}
-        <a
-            href="mailto:Miguel.CortesMunoz@outlook.com"
-            className="inline-block text-xl text-indigo-200 hover:text-mist transition-colors mb-10"
-        >
-            Miguel.CortesMunoz@outlook.com
-        </a>
-
-        {/* Links */}
-        <div className="flex justify-center flex-wrap gap-4">
-
-            <a
-                href="https://github.com/Miguel-Cortes-Munoz"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3 rounded-lg border border-mist/20 text-mist hover:bg-mist/10 transition"
-            >
-                GitHub
-            </a>
-
-            <a
-                href="https://www.linkedin.com/in/miguel-cortes-munoz-472a74359/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3 rounded-lg border border-mist/20 text-mist hover:bg-mist/10 transition"
-            >
-                LinkedIn
-            </a>
-
-            <a
-                href="/MiguelCortesMunoz_DEVresume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3 rounded-lg bg-indigo/40 text-mist hover:bg-indigo/60 transition"
-            >
-                Resume
-            </a>
-
-        </div>
-
-    </div>
-</section>
-
+          </section>
         </div>
       </div>
     </>
