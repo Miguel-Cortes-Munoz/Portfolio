@@ -44,9 +44,9 @@ function App() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               {/* Photo */}
               <div className="flex justify-center">
-                <div className="w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden">
+                <div className="w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden border-2 border-mist/20">
                   <img
-                    src="/images/me.jpg"
+                    src="/PortraitEdit.jpg"
                     alt="Miguel"
                     className="w-full h-full object-cover"
                   />
@@ -91,7 +91,7 @@ function App() {
             </div>
           </section>
           {/* Projects */}
-          <section className="container mx-auto px-4 py-8">
+          <section id="projects" className="container mx-auto px-4 py-8">
             <h1 className="text-4xl font-bold text-mist mb-8">Projects</h1>
 
             <div className="container mx-auto px-2 py-8">
@@ -299,7 +299,7 @@ function App() {
             </a>
 
             <a
-                href="../public/MiguelCortesMunoz_DEVresume.pdf"
+                href="/MiguelCortesMunoz_DEVresume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 rounded-lg bg-indigo/40 text-mist hover:bg-indigo/60 transition"

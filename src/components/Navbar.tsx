@@ -10,11 +10,18 @@ export default function Navbar({ name }: NavbarProps) {
      <h1 className="text-lg font-semibold text-white-900">{name}</h1>
 
       <div className="flex gap-6 text-sm text-white-900/70">
-        <a href="#projects" className="hover:text-plum transition-colors">
-          Projects
-        </a>
+
         <a href="#about" className="hover:text-plum transition-colors">
           About
+        </a>
+                <a href="#projects" className="hover:text-plum transition-colors">
+          Projects
+        </a>
+                <a href="#education" className="hover:text-plum transition-colors">
+        Education
+        </a>
+                <a href="#skills" className="hover:text-plum transition-colors">
+          Skills
         </a>
         <a href="#contact" className="hover:text-plum transition-colors">
           Contact
