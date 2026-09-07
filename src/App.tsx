@@ -40,7 +40,7 @@ function App() {
 
         <div
           ref={contentRef}
-          className="min-h-screen bg-linear-to-br from-midnight via-indigo to-midnight "
+          className="min-h-screen bg-linear-to-br from-midnight via-blue to-midnight "
         >
           <div id="about" className="pt-8"></div>
 

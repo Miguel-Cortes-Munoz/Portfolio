@@ -5,33 +5,53 @@ type HeroProps = {
 };
 
 export default function Hero({ onEnter }: HeroProps) {
-  const [stars] = useState(() =>
-    Array.from({ length: 100 }).map(() => ({
+
+
+const [stars] = useState(() =>
+  Array.from({ length: 100 }).map(() => {
+    const baseOpacity = Math.random() * 0.5 + 0.3;
+    const twinkles = Math.random() < 0.3;
+
+    return {
       top: Math.random() * 100,
       left: Math.random() * 100,
       size: Math.random() * 2 + 1,
-      opacity: Math.random() * 0.6 + 0.2,
-    }))
-  );
+      baseOpacity,
+      dimOpacity: baseOpacity * 0.4,
+      duration: Math.random() * 4 + 4,
+      delay: Math.random() * 5,
+      twinkles,
+    };
+  })
+);
+
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-midnight text-mist">
+    <section className="relative min-h-screen overflow-hidden bg-midnight text-mist ">
       {/* scattered stars */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-        {stars.map((star, i) => (
-          <div
-            key={i}
-            className="absolute rounded-full bg-mist"
-            style={{
-              top: `${star.top}%`,
-              left: `${star.left}%`,
-              width: `${star.size}px`,
-              height: `${star.size}px`,
-              opacity: star.opacity,
-            }}
-          />
-        ))}
-      </div>
+  <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+{stars.map((star, i) => (
+  <div
+    key={i}
+    className="absolute rounded-full bg-mist"
+    style={{
+      top: `${star.top}%`,
+      left: `${star.left}%`,
+      width: `${star.size}px`,
+      height: `${star.size}px`,
+      opacity: star.baseOpacity,
+      ...(star.twinkles && {
+        animation: `twinkle ${star.duration}s ease-in-out infinite`,
+        animationDelay: `${star.delay}s`,
+        "--base-opacity": star.baseOpacity,
+        "--dim-opacity": star.dimOpacity,
+      }),
+    } as React.CSSProperties}
+  />
+))}
+  </div>
+
+    
 
       <div className="relative z-10 max-w-4xl px-8 sm:px-16 pt-32">
         <p className="font-body text-sm uppercase tracking-widest text-teal mb-4">
@@ -55,6 +75,8 @@ export default function Hero({ onEnter }: HeroProps) {
           view my work →
         </button>
       </div>
+      
     </section>
+    
   );
 }

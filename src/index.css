@@ -17,6 +17,12 @@
 
   /* text */
   --color-mist: #e8e6f0;
+
+
+}
+@keyframes twinkle {
+  0%, 100% { opacity: var(--base-opacity); }
+  50% { opacity: var(--dim-opacity); }
 }
 
 body {
